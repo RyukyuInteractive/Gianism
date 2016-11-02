@@ -137,6 +137,9 @@ class Facebook extends Common\Mail
         switch($action){
             case 'connect':
             case 'login':
+
+                // TODO: add filter
+
                 return $this->api->getLoginUrl(array(
                     'scope' => 'email',
                     'redirect_uri' => $this->get_redirect_endpoint(),

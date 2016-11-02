@@ -138,10 +138,16 @@ class Facebook extends Common\Mail
             case 'connect':
             case 'login':
 
-                // TODO: add filter
+                /**
+                 * gianism_facebook_login_scope
+                 *
+                 * @param string $scope
+                 * @return string
+                 */
+                $scope = apply_filters('gianism_facebook_login_scope', 'email');
 
                 return $this->api->getLoginUrl(array(
-                    'scope' => 'email',
+                    'scope' => $scope,
                     'redirect_uri' => $this->get_redirect_endpoint(),
                 ));
                 break;

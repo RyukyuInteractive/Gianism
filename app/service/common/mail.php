@@ -681,7 +681,15 @@ EOS;
      * @param string $message
      */
     protected function auth_fail($message){
-        $this->add_message($this->_('Oops, Failed to Authenticate.').' '.$message, true);
+        /**
+         * gianism_auth_fail_message
+         *
+         * @param string $message
+         * @return string
+         */
+        $errorMessage = apply_filters('gianism_auth_fail_message', $this->_('Oops, Failed to Authenticate.').' '.$message);
+
+        $this->add_message($errorMessage, true);
     }
 
     /**

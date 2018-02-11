@@ -460,7 +460,7 @@ class Facebook extends AbstractService {
 	 */
 	public function get_returned_user() {
 		$redirect_helper = $this->api->getRedirectLoginHelper();
-		if ( ! ( $access_token = $redirect_helper->getAccessToken() ) ) {
+		if ( ! ( $access_token = $redirect_helper->getAccessToken($this->get_redirect_endpoint()) ) ) {
 			throw new \Exception( $redirect_helper->getError(), $redirect_helper->getErrorCode() );
 		}
 		$user = $this->get_user_profile( 'login', $access_token );
